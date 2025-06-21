@@ -1,0 +1,29 @@
+.galleryList {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  list-style: none;
+}
+.paragraph {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+}
+.item {
+  object-fit: cover;
+}
+.container {
+  width: 100%;
+  padding: 20px;
+}
+.masonryGrid {
+  display: flex;
+  margin-left: -35px;
+  width: 100%;
+}
+
+.masonryColumn {
+  padding-left: auto;
+  background-clip: padding-box;
+}
