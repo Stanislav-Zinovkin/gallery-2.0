@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./LoadMoreBtn.module.css";
 type LoadMoreProps = {
-  loadeing: boolean;
+  loading: boolean;
   gallery: any[];
   handleLoadMore: () => void;
 };

@@ -6,20 +6,12 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import LoadMore from "./components/loadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
-type UnsplashImage = {
-    id: string;
-    urls: {
-      small: string;
-      regular: string;
-      full: string;
-    };
-    alt_description: string;
+import { UnsplahImage } from "./unsplash";
 
-  } 
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [gallery, setGallery] = useState<UnsplashImage[]>([]);
+  const [gallery, setGallery] = useState<UnsplahImage[]>([]);
   const [query, setQuery] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState<number>(1);

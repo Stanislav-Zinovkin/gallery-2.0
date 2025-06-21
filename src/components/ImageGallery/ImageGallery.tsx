@@ -2,22 +2,9 @@ import React from "react";
 import Masonry from "react-masonry-css";
 import ImageCard from "./ImageCard/ImageCard";
 import styles from "./ImageGallery.module.css";
-
-type Image = {
-  id: string;
-  urls: {
-    small: string;
-    regular?: string;
-    full?: string;
-  };
-  alt_description: string;
-  likes: number;
-  user: {
-    name: string;
-  };
-};
+import { UnsplahImage } from "../../unsplash";
 type ImageGalleryProps = {
-  gallery: Image[];
+  gallery: UnsplahImage[];
   onImageClick: (url: string) => void;
 };
 const ImageGallery: React.FC<ImageGalleryProps> = ({ gallery, onImageClick }) => {

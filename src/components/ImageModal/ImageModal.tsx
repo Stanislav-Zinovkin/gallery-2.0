@@ -20,7 +20,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageUrl, onClose }) =>
       overlayClassName={styles.overlay}
     >
       <div className={styles.wrapper}>
-        <img src={imageUrl} alt="Large image" />
+        <img src={imageUrl ?? undefined} alt="Large image" />
       </div>
     </Modal>
   );
