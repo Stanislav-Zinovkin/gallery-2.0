@@ -6,18 +6,30 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import LoadMore from "./components/loadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
+type UnsplashImage = {
+    id: string;
+    urls: {
+      small: string;
+      regular: string;
+      full: string;
+    };
+    alt_description: string;
 
-function App() {
-  const [loading, setLoading] = useState(false);
-  const [gallery, setGallery] = useState([]);
-  const [query, setQuery] = useState("");
-  const [error, setError] = useState(null);
-  const [page, setPage] = useState(1);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalImageUrl, setModalImageUrl] = useState(null);
+  } 
+
+const App: React.FC = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [gallery, setGallery] = useState<UnsplashImage[]>([]);
+  const [query, setQuery] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState<number>(1);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [modalImageUrl, setModalImageUrl] = useState<string | null>(null);
   const myApiKey = "QZISFSen2b0BM38Ec0hNTK8ZDw23fcBV4MezLamP5Uc";
 
-  const prevPageRef = useRef(1);
+  const prevPageRef = useRef<number>(1);
+  
+  
 
   useEffect(() => {
     if (!query) return;
@@ -40,8 +52,12 @@ function App() {
             ? response.data.results
             : [...prevGallery, ...response.data.results]
         );
-      } catch (error) {
-        setError(error.message);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError(String(err));
+        }
       } finally {
         setLoading(false);
       }
@@ -49,12 +65,12 @@ function App() {
     fetchGallery();
   }, [query, page]);
 
-  const handleSubmit = (newQuery) => {
+  const handleSubmit = (newQuery: string) => {
     setQuery(newQuery);
     setGallery([]);
     setPage(1);
   };
-  const openModal = (imageUrl) => {
+  const openModal = (imageUrl: string) => {
     setModalIsOpen(true);
     setModalImageUrl(imageUrl);
   };

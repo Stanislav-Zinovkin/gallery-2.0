@@ -3,7 +3,24 @@ import Masonry from "react-masonry-css";
 import ImageCard from "./ImageCard/ImageCard";
 import styles from "./ImageGallery.module.css";
 
-const ImageGallery = ({ gallery, onImageClick }) => {
+type Image = {
+  id: string;
+  urls: {
+    small: string;
+    regular?: string;
+    full?: string;
+  };
+  alt_description: string;
+  likes: number;
+  user: {
+    name: string;
+  };
+};
+type ImageGalleryProps = {
+  gallery: Image[];
+  onImageClick: (url: string) => void;
+};
+const ImageGallery: React.FC<ImageGalleryProps> = ({ gallery, onImageClick }) => {
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,

@@ -1,6 +1,26 @@
 import React from "react";
 import styles from "./ImageCard.module.css";
-const ImageCard = ({ image, onImageClick }) => {
+type UnsplashImage = {
+  id: string;
+  urls: {
+    small: string;
+    regular: string;
+    full: string;
+  };
+  alt_description: string;
+  likes: number;
+  user: {
+    name: string;
+  }
+}
+
+
+type ImageCardProps = {
+  image: UnsplashImage;
+  onImageClick: (imageUrl: string) => void;
+}
+
+const ImageCard: React.FC<ImageCardProps> = ({ image, onImageClick }) => {
   return (
     <div
       className={styles.card}

@@ -1,7 +1,11 @@
 import React from "react";
 import { PacmanLoader } from "react-spinners";
 import styles from "./Loader.module.css";
-const Loader = ({ loading }) => {
+
+type LoaderProps = {
+  loading: boolean;
+};
+const Loader: React.FC<LoaderProps> = ({ loading }) => {
   return (
     <div className={styles.container}>
       {loading && (

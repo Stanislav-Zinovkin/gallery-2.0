@@ -1,7 +1,13 @@
 import React from "react";
-
 import styles from "./LoadMoreBtn.module.css";
-const LoadMore = ({ loading, gallery, handleLoadMore }) => {
+type LoadMoreProps = {
+  loadeing: boolean;
+  gallery: any[];
+  handleLoadMore: () => void;
+};
+
+
+const LoadMore: React.FC<LoadMoreProps> = ({ loading, gallery, handleLoadMore }) => {
   return (
     <>
       {gallery.length > 0 && !loading && (
